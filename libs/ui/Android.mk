@@ -23,7 +23,6 @@ LOCAL_SRC_FILES:= \
 	GraphicBufferMapper.cpp \
 	PixelFormat.cpp \
 	Rect.cpp \
-        Overlay.cpp \
 	Region.cpp \
 	UiConfig.cpp
 
@@ -54,6 +53,10 @@ LOCAL_CFLAGS += -DSAMSUNG_HDMI_SUPPORT
 LOCAL_SHARED_LIBRARIES += libhdmiclient
 LOCAL_C_INCLUDES += hardware/samsung/$(TARGET_BOARD_PLATFORM)/libhdmi/libhdmiservice
 LOCAL_C_INCLUDES += hardware/samsung/$(TARGET_BOARD_PLATFORM)/include
+endif
+
+ifeq ($(BOARD_USES_LEGACY_OVERLAY), true)
+LOCAL_SRC_FILES += legacy/Overlay.cpp
 endif
 
 LOCAL_MODULE:= libui
